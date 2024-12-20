@@ -4,6 +4,7 @@ import BuyCredit from "./pages/BuyCredit"; // Page for buying credits
 import Home from "./pages/Home"; // Home page of the application
 import Result from "./pages/Result"; // Page displaying results
 import Navbar from './components/Navbar'; // Reusable Navbar component
+import Footer from './components/Footer';
 
 // Main App component that serves as the root of the application
 const App = () => {
@@ -24,6 +25,9 @@ const App = () => {
         {/* Route for the Buy Credit page */}
         <Route path='/buy-credit' element={<BuyCredit />} />
       </Routes>
+
+      {/* Include the Footer component to be displayed on all pages */}
+      <Footer />
     </div>
   );
 };
