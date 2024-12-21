@@ -4,6 +4,7 @@ import cors from 'cors'; // Import CORS to allow and manage cross-origin request
 import 'dotenv/config'; // Import dotenv to load environment variables from a .env file into process.env
 import connectDb from './config/mongodb.js'; // Import the database connection module for MongoDB
 import userRouter from './routes/userRoutes.js'; // Import the user-related routes
+import imageRouter from './routes/imageRoutes.js'; // Import the image-related routes
 
 // Set the port from environment variables or use a default value of 4000
 const PORT = process.env.PORT || 4000;
@@ -25,6 +26,10 @@ await connectDb(); // Connect to the MongoDB database using the configuration in
 // Register user-related routes under the "/api/user" endpoint
 // All routes defined in userRoutes.js will be prefixed with "/api/user"
 app.use('/api/user', userRouter);
+
+// Register image-related routes under the "/api/image" endpoint
+// All routes defined in imageRouter.js will be prefixed with "/api/image"
+app.use('/api/image', imageRouter);
 
 // Define a simple route to verify that the API is up and running
 // When the root URL ("/") is accessed, it sends a plain text response
