@@ -75,3 +75,24 @@ export const loginUser = async (req, res) => {
         return res.json({ success: false, message: error.message }); // Respond with error message
     }
 }
+
+// Controller to handle user credits
+export const userCredits = async (req, res) => {
+    try {
+        // Extracting userId from the request body
+        const { userId } = req.body;
+
+        if (!userId) {
+            return res.json({ success: false, message: 'Not Authorized. Login again' });
+        }
+
+        // Search for a user with the provided userId in the database
+        const user = await userModel.findById(userId);
+
+        // Respond with success, including the creditBalance and user name
+        return res.json({ success: true, credits: user.creditBalance, user: { name: user.name } });
+    } catch (error) {
+        console.log(error); // Log any errors to the console
+        return res.json({ success: false, message: error.message }); // Respond with error message
+    }
+}
