@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { motion } from "motion/react"; // Importing motion for animations
 import { assets, plans } from "../assets/assets"
 import { AppContext } from "../context/AppContext"
 
@@ -6,7 +7,13 @@ const BuyCredit = () => {
   const { user } = useContext(AppContext);
 
   return (
-    <div className="min-h-[80vh] text-center pt-14 mb-10">
+    <motion.div
+      initial={{ opacity: 0.2, y: 100 }} // Initial animation state
+      transition={{ duration: 1 }} // Duration of the animation
+      whileInView={{ opacity: 1, y: 0 }} // Animation state when the element is in view
+      viewport={{ once: true }} // Run animation only once
+      className="min-h-[80vh] text-center pt-14 mb-10"
+    >
       <button className="border border-gray-400 px-10 py-2 rounded-full mb-6">Our Plans</button>
       <h1 className="text-center text-3xl font-medium mb-6 sm:mb-10">Choose the Plan</h1>
 
@@ -28,7 +35,7 @@ const BuyCredit = () => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

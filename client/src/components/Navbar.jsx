@@ -5,7 +5,7 @@ import { AppContext } from "../context/AppContext"; // Importing the application
 
 // Navbar Component
 const Navbar = () => {
-    const { user } = useContext(AppContext); // Accessing the user data from AppContext
+    const { user, setShowLogin } = useContext(AppContext); // Accessing the user data from AppContext
     const navigate = useNavigate(); // Hook for navigation within the app
 
     return (
@@ -49,7 +49,10 @@ const Navbar = () => {
                             <p onClick={() => navigate('/buy-credit')} className="cursor-pointer">Pricing</p>
 
                             {/* Login Button */}
-                            <button className="bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full">
+                            <button
+                                onClick={() => setShowLogin(true)}
+                                className="bg-zinc-800 text-white px-7 py-2 sm:px-10 text-sm rounded-full"
+                            >
                                 Login
                             </button>
                         </div>

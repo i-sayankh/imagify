@@ -1,9 +1,17 @@
+import { motion } from "motion/react"; // Importing motion for animations
 import { stepsData } from "../assets/assets"
 
 // Steps component to display how the process works
 const Steps = () => {
   return (
-    <div className="flex flex-col items-center justify-center my-32">
+    // Animated container for the header section
+    <motion.div
+      initial={{ opacity: 0.2, y: 100 }} // Initial animation state
+      transition={{ duration: 1 }} // Duration of the animation
+      whileInView={{ opacity: 1, y: 0 }} // Animation state when the element is in view
+      viewport={{ once: true }} // Run animation only once
+      className="flex flex-col items-center justify-center my-32"
+    >
       {/* Heading for the section */}
       <h1 className="text-3xl sm:text-4xl font-semibold mb-2">How it works</h1>
 
@@ -31,7 +39,7 @@ const Steps = () => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

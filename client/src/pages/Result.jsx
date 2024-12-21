@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { motion } from "motion/react"; // Importing motion for animations
 import { assets } from "../assets/assets"
 
 const Result = () => {
@@ -15,7 +16,14 @@ const Result = () => {
   }
 
   return (
-    <form onSubmit={onSubmitHandler} className="flex flex-col min-h-[90vh] justify-center items-center">
+    <motion.form
+      initial={{ opacity: 0.2, y: 100 }} // Initial animation state
+      transition={{ duration: 1 }} // Duration of the animation
+      whileInView={{ opacity: 1, y: 0 }} // Animation state when the element is in view
+      viewport={{ once: true }} // Run animation only once
+      onSubmit={onSubmitHandler}
+      className="flex flex-col min-h-[90vh] justify-center items-center"
+    >
       {/* Image and loading bar */}
       <div>
         <div className="relative">
@@ -52,7 +60,7 @@ const Result = () => {
           <a href={image} download className="bg-zinc-900 px-10 py-3 rounded-full cursor-pointer">Download</a>
         </div>
       }
-    </form>
+    </motion.form>
   )
 }
 

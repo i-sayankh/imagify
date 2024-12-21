@@ -1,9 +1,16 @@
+import { motion } from "motion/react"; // Importing motion for animations
 import { assets } from "../assets/assets"
 
 const Description = () => {
     return (
         // Main container for the description section with padding and centering
-        <div className="flex flex-col items-center justify-center my-24 p-6 md:px-28">
+        <motion.div
+            initial={{ opacity: 0.2, y: 100 }} // Initial animation state
+            transition={{ duration: 1 }} // Duration of the animation
+            whileInView={{ opacity: 1, y: 0 }} // Animation state when the element is in view
+            viewport={{ once: true }} // Run animation only once
+            className="flex flex-col items-center justify-center my-24 p-6 md:px-28"
+        >
 
             {/* Header for the title */}
             <h1 className="text-3xl sm:text-4xl font-semibold mb-2">Create AI Images</h1>
@@ -38,7 +45,7 @@ const Description = () => {
                     </p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
