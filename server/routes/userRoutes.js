@@ -22,9 +22,9 @@ userRouter.post('/login', loginUser);
 
 /**
  * Route to handle user credits.
- * POST request to '/cedits' will trigger the userCredits controller.
+ * GET request to '/cedits' will trigger the userCredits controller.
  */
-userRouter.post('/credits', userAuth, userCredits);
+userRouter.get('/credits', userAuth, userCredits);
 
 // Export the router to be used in other parts of the application
 export default userRouter;
